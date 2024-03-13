@@ -250,67 +250,67 @@ class _FlashyFlushbarState extends State<FlashyFlushbar> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: SafeArea(
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            key: const ValueKey('flashy_flushbar_gesture_key'),
-            onTap: widget.onTap != null
-                ? () {
-                    widget.onTap!();
-                    animationController.reverse();
-                  }
-                : null,
-            child: SizedBox(
-              height: fullHeight,
-              child: _DismissibleWrapper(
-                dismissDirection: widget.dismissDirection,
-                isDismissible: widget.isDismissible,
-                child: AnimatedBuilder(
-                  animation: animationController,
-                  builder: (BuildContext context, Widget? child) {
-                    return Stack(
-                      children: [
-                        Positioned(
-                          top: (fullHeight * animationController.value) - (fullHeight),
-                          child: Container(
-                            width: fullWidth,
-                            height: toastHeight,
-                            margin: widget.margin,
-                            decoration: BoxDecoration(
-                              color: widget.backgroundColor,
-                              boxShadow: widget.boxShadows,
-                              borderRadius: widget.borderRadius,
-                            ),
-                            padding: EdgeInsets.only(
-                              left: widget.horizontalPadding.left,
-                              right: widget.horizontalPadding.right,
-                            ),
-                            child: widget.customWidget ??
-                                Row(
-                                  children: [
-                                    widget.leadingWidget,
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: widget.messageHorizontalSpacing),
+    return SafeArea(
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          key: const ValueKey('flashy_flushbar_gesture_key'),
+          onTap: widget.onTap != null
+              ? () {
+                  widget.onTap!();
+                  animationController.reverse();
+                }
+              : null,
+          child: SizedBox(
+            height: fullHeight,
+            child: _DismissibleWrapper(
+              dismissDirection: widget.dismissDirection,
+              isDismissible: widget.isDismissible,
+              child: AnimatedBuilder(
+                animation: animationController,
+                builder: (BuildContext context, Widget? child) {
+                  return Stack(
+                    children: [
+                      Positioned(
+                        top: (fullHeight * animationController.value) - (fullHeight),
+                        child: Container(
+                          width: fullWidth,
+                          height: toastHeight,
+                          margin: widget.margin,
+                          decoration: BoxDecoration(
+                            color: widget.backgroundColor,
+                            boxShadow: widget.boxShadows,
+                            borderRadius: widget.borderRadius,
+                          ),
+                          padding: EdgeInsets.only(
+                            left: widget.horizontalPadding.left,
+                            right: widget.horizontalPadding.right,
+                          ),
+                          child: widget.customWidget ??
+                              Row(
+                                children: [
+                                  widget.leadingWidget,
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: widget.messageHorizontalSpacing),
+                                      child: Material(
                                         child: Text(
                                           widget.message,
                                           style: widget.messageStyle,
                                         ),
                                       ),
                                     ),
-                                    widget.trailingWidget,
-                                  ],
-                                ),
-                          ),
+                                  ),
+                                  widget.trailingWidget,
+                                ],
+                              ),
                         ),
-                      ],
-                    );
-                  },
-                ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
