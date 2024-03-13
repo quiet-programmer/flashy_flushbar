@@ -250,7 +250,7 @@ class _FlashyFlushbarState extends State<FlashyFlushbar> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return SizedBox(
       child: SafeArea(
         child: Align(
           alignment: Alignment.topCenter,
