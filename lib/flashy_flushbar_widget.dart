@@ -296,6 +296,7 @@ class _FlashyFlushbarState extends State<FlashyFlushbar> with SingleTickerProvid
                                       padding: EdgeInsets.symmetric(
                                           horizontal: widget.messageHorizontalSpacing),
                                       child: Material(
+                                        color: Colors.transparent,
                                         child: Text(
                                           widget.message,
                                           style: widget.messageStyle,
